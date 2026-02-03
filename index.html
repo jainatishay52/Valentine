@@ -2,112 +2,52 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Pratiksha ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
-  padding: 0;
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(to right, #ff9a9e, #fecfef);
+  font-family: 'Poppins', sans-serif;
+  background: black;
   overflow: hidden;
-}
-
-.container {
-  margin-top: 100px;
-}
-
-h1 {
-  font-size: 40px;
   color: white;
 }
 
-button {
-  padding: 15px 30px;
-  font-size: 20px;
-  border: none;
-  border-radius: 30px;
-  background-color: #ff4b5c;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+/* Reel Layout */
+.reel {
+  position: relative;
+  width: 100%;
+  height: 100vh;
 }
 
-button:hover {
-  background-color: #ff1e3c;
-  transform: scale(1.1);
+/* Background Blur */
+.reel::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('photo.jpg') center/cover no-repeat;
+  filter: blur(20px) brightness(50%);
+  z-index: -2;
 }
 
-#surprise {
-  display: none;
-  margin-top: 40px;
-  color: white;
-  font-size: 28px;
-  animation: fadeIn 2s ease-in-out;
+/* Dark Overlay */
+.reel::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: -1;
 }
 
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-.heart {
-  position: fixed;
-  color: red;
-  animation: float 5s linear infinite;
-}
-
-@keyframes float {
-  0% {transform: translateY(100vh);}
-  100% {transform: translateY(-10vh);}
-}
-</style>
-</head>
-
-<body>
-
-<div class="container">
-  <h1>Hey Pratiksha ❤️</h1>
-  <button onclick="showSurprise()">Click Here For A Cute Surprise</button>
-
-  <div id="surprise">
-    <p>Happy Valentine’s Day My Cutest Girl 💕</p>
-    <p>You make my world brighter every day 🌸</p>
-    <p>Forever Yours,</p>
-    <p><b>Atishay ❤️</b></p>
-
-    <h2>Will You Always Be Mine? 💍</h2>
-  </div>
-</div>
-
-<!-- Romantic Background Music -->
-<audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
-</audio>
-
-<script>
-function showSurprise() {
-  document.getElementById("surprise").style.display = "block";
-  document.getElementById("music").play();
-  createHearts();
-}
-
-function createHearts() {
-  setInterval(function() {
-    var heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(function() {
-      heart.remove();
-    }, 5000);
-  }, 300);
-}
-</script>
-
-</body>
-</html>
+/* Center Card */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
